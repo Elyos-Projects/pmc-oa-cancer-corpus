@@ -1,0 +1,33 @@
+{
+  "id": "pmc-cancer-europepmc-020",
+  "title": "Europe PMC annotation (SciLite) enrichment",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "nlp"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Europe PMC's SciLite annotation service provides community-contributed and automated annotations (gene/protein mentions, disease mentions, chemical entities) over OA articles. If the reuse terms of these annotations are verified compatible with the corpus license and our enrichment use case, adding them as optional metadata fields would significantly increase the corpus's value for NLP/biomedical text-mining consumers. This is a backlog item gated on license compatibility verification.",
+  "objective": "Verify that Europe PMC SciLite annotation reuse terms are compatible with the corpus license and gate-002 rules; if compatible, implement an enrichment module that fetches and attaches SciLite annotations as optional metadata fields on canonical records.",
+  "acceptanceCriteria": [
+    "A license compatibility assessment for Europe PMC SciLite annotations is completed and committed, covering redistribution rights, attribution requirements, and compatibility with CC-BY-4.0 corpus metadata.",
+    "If annotations are compatible: an enrichment module fetches SciLite annotations via the Europe PMC REST API within rate limits, attaches them as optional extended metadata fields (not part of the core canonical record), and records provenance (annotation source, version, retrieval date).",
+    "If annotations are NOT compatible: a documented note explains why they were excluded and what would need to change; no annotations are bundled.",
+    "The License+compliance reviewer confirms the compatibility determination before implementation begins.",
+    "No API keys or secrets committed; rate limits respected; code MIT licensed; pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off."
+  ],
+  "resources": [
+    "pmc-cancer-gate-002 (license compatibility rules)",
+    "pmc-cancer-reviewer-014 (reviewer must confirm compatibility)",
+    "Europe PMC SciLite annotations documentation — https://europepmc.org/annotations",
+    "Europe PMC REST API terms of use"
+  ],
+  "output": "A merged PR with a committed license-compatibility assessment and (if compatible) an enrichment module adding SciLite annotations as optional extended metadata; or a committed non-compatibility note if the terms do not permit enrichment.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

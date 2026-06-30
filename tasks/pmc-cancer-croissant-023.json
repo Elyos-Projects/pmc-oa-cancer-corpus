@@ -1,0 +1,33 @@
+{
+  "id": "pmc-cancer-croissant-023",
+  "title": "Croissant ML metadata descriptor for releases",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "data-pipeline"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "ML dataset discovery platforms (Kaggle, Google Dataset Search, Hugging Face) increasingly require or benefit from schema.org/Croissant ML metadata descriptors. Adding a Croissant manifest to each corpus release improves discoverability for ML/NLP consumers, which is a core beneficiary group. The descriptor must accurately reflect the license tiers in the corpus — in particular, it must not represent the whole corpus as a single license when it is a multi-tier mixed-license collection.",
+  "objective": "Implement a Croissant ML metadata descriptor generator that emits a schema.org/Croissant-compatible manifest for each corpus release, accurately representing the multi-tier license structure and corpus composition.",
+  "acceptanceCriteria": [
+    "Generates a valid schema.org/Croissant manifest for each corpus release, covering dataset name, description, DOI/URL, license tiers (accurately representing the multi-tier structure — not a single merged license), provenance, and record count per tier.",
+    "The Croissant manifest is committed alongside each release and validates against the official Croissant schema.",
+    "The manifest accurately represents each licenseTier as a separate RecordSet or distribution, so ML consumers can select only the tiers they are licensed to use.",
+    "A note is added to the datasheet explaining how to interpret the Croissant manifest for multi-license corpora.",
+    "pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off; code MIT licensed."
+  ],
+  "resources": [
+    "pmc-cancer-model-001 (licenseTier and manifest fields)",
+    "pmc-cancer-fullbuild-010 (release manifest format to describe)",
+    "Croissant ML metadata specification — https://github.com/mlcommons/croissant",
+    "schema.org/Dataset vocabulary"
+  ],
+  "output": "A merged PR adding a Croissant manifest generator (TypeScript/ESM) that emits a schema.org/Croissant-compatible manifest for each corpus release, with CI validation and documentation of the multi-tier license representation.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

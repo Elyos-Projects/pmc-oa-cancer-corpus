@@ -1,0 +1,35 @@
+{
+  "id": "pmc-cancer-patient-008",
+  "title": "Identifiable-patient-content detector + fixtures",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "data-pipeline", "licensing"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Some published OA cancer articles — especially case reports — embed potentially identifiable patient media (clinical photographs, rare-disease detail, full-face images, supplementary patient-level tables). Redistributing these in a bundle without detection is a serious privacy harm. The gate-002 checklist mandates a patient-content detector; this task implements it. The detector must use only signals from already-public metadata (study type, article structure, media element tags) — it must never attempt to identify, link, re-identify, extract, or enhance identifying content. Flagged articles are kept metadata-only. Depends on gate-002 (detector signal definition) and license-004 (for integration into the pipeline).",
+  "objective": "Implement the identifiable-patient-content detector: classify articles using the reviewer-approved signal set (case-report study type + clinical-image/full-face/patient-media/individual-level-supplementary signals), route flagged articles to metadata-only, and provide synthetic fixtures that prove flagged cases are blocked in CI.",
+  "acceptanceCriteria": [
+    "Implements the reviewer-approved signal set: case-report study-type classification plus clinical-image, full-face, patient-media, and individual-level-supplementary-data signals derived from already-public article metadata and JATS structure tags.",
+    "Flagged articles are set to patientContentFlag {flagged:true, reason:<signal>, action:'metadata-only'} and excluded from all redistributable bundles; fullText.reuseAllowedInBundle is set false.",
+    "Ships synthetic fixtures: at least one flagged case (case report with patient-media signal) and at least one clean case; CI asserts the flagged case is forced metadata-only and does not appear in any redistributable bundle.",
+    "Never extracts, enhances, links, or re-identifies individuals; only records the signal type and flag reason; no real flagged content (patient images, patient tables) is committed to the repository.",
+    "The detector's signal definitions are documented and have been reviewed/approved by the License+compliance reviewer (pmc-cancer-reviewer-014); open questions about sensitivity vs. over-flagging are surfaced and recorded.",
+    "Code MIT licensed; pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off."
+  ],
+  "resources": [
+    "pmc-cancer-gate-002 (patient-content screen criterion — signals and disposition logic)",
+    "pmc-cancer-license-004 (pipeline integration point)",
+    "pmc-cancer-reviewer-014 (reviewer must approve signal definitions)",
+    "PLAN.md (Data, licensing & compliance — Guardrail #2: Identifiable-patient-content screen)",
+    "JATS <article-type>, <fig>, <supplementary-material> element documentation"
+  ],
+  "output": "A merged PR adding the patient-content detector module (TypeScript/ESM), synthetic fixtures (flagged + clean cases), CI assertions enforcing metadata-only routing, and reviewer-approved signal documentation.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "pmc-cancer-bundle-005",
+  "title": "License-segregated bundle builder + CI fail-on-violation assertion",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "licensing", "data-pipeline"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Bundle assembly is where license mislabeling causes real harm: a non-commercial article in a commercial bundle is a compliance failure, not a minor defect. This task implements the bundle builder that assembles license-segregated output directories strictly keyed on licenseTier, emits per-bundle LICENSE manifests, and ships a CI assertion that fails the build if any article lands in a disallowed bundle. A deliberate fixture mis-routing test is required so the fail-on-violation path is continuously exercised. Depends on license-004 (resolver output) and gate-002 (tiering rules).",
+  "objective": "Implement the license-segregated bundle builder: assemble redistributable bundles strictly by licenseTier, emit per-bundle LICENSE manifests, and ship a CI assertion that fails the build when a mis-tiered article is detected — with a deliberate fixture that proves the failure path works.",
+  "acceptanceCriteria": [
+    "Builds bundles strictly keyed on licenseTier (commercial, non-commercial, no-derivatives, metadata-only); no article is placed in a bundle of a disallowed tier.",
+    "Emits a per-bundle LICENSE manifest listing each included article's PMCID, license id, license URL, and tier; no article's license is modified or relicensed.",
+    "Ships a fixture corpus where a non-commercial article is deliberately mis-routed to the commercial bundle and the build fails in CI with a clear error message; the fail-on-violation path is always exercised in CI.",
+    "Ships a fixture where an article with a flagged patient-content signal is mis-routed to a redistributable bundle and the build likewise fails.",
+    "Build output is deterministic: given the same input manifest and articles, the bundle contents and per-bundle manifest are byte-identical across runs.",
+    "Records the manifest content hash (SHA-256 of the manifest JSON) so independent rebuilds can verify reproducibility.",
+    "pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off; code MIT licensed."
+  ],
+  "resources": [
+    "pmc-cancer-license-004 (resolver that supplies licenseTier)",
+    "pmc-cancer-gate-002 (tiering rules defining allowed/disallowed bundle membership)",
+    "pmc-cancer-model-001 (canonical record — fullText.reuseAllowedInBundle field)",
+    "PLAN.md (Solution approach — Step 7: Bundle build; Test fixtures section)"
+  ],
+  "output": "A merged PR adding the bundle builder module (TypeScript/ESM), per-bundle LICENSE manifest emitter, CI fail-on-violation assertion, and fixture corpora (mis-routed non-commercial + mis-routed patient-content) that confirm the failure path in CI.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

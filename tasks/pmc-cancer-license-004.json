@@ -1,0 +1,36 @@
+{
+  "id": "pmc-cancer-license-004",
+  "title": "License resolver + tiering (OA-field × JATS cross-check)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "licensing", "data-pipeline"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The corpus gate requires per-article license resolution that is robust, auditable, and impossible to bypass. PMC OA articles carry a license in the OA service's file-list field and a <license> element in the JATS XML; these can conflict. This task implements the resolver that reads both sources, cross-checks them, maps to an SPDX/CC id and a licenseTier, and flags any conflict as FLAGGED rather than silently picking one source. Depends on model-001 (record fields) and gate-002 (the authoritative tiering rules).",
+  "objective": "Implement the license resolver that reads the OA-service license field and the JATS <license> element, cross-checks them, maps to SPDX/CC id + licenseTier per the gate-002 checklist, flags conflicts, and populates the license and licenseTier fields of the canonical record.",
+  "acceptanceCriteria": [
+    "Resolver reads both the PMC OA file-list license field and the article JATS <license> element; cross-checks them and emits a single resolved license {id, url, source, permitsRedistribution, permitsDerivatives, commercialUse, snapshotRef}.",
+    "Any conflict between the OA-field and JATS sources results in a FLAG disposition with the conflict reason recorded; never a silent default-allow.",
+    "The licenseTier mapping follows gate-002 exactly: CC0/CC-BY/CC-BY-SA/CC-BY-ND → commercial or no-derivatives; CC-BY-NC family → non-commercial; no-CC-code/NIHMS/unverifiable → metadata-only or excluded.",
+    "License fixtures cover every license id in gate-002 (CC0, CC-BY, CC-BY-SA, CC-BY-ND, CC-BY-NC, CC-BY-NC-SA, CC-BY-NC-ND, no-CC-code, NIHMS) plus negative/conflict cases; each must resolve to the correct tier in CI.",
+    "pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off.",
+    "No API keys or secrets are committed; PMC/Europe PMC access uses official OA file lists and REST endpoints within rate limits."
+  ],
+  "resources": [
+    "pmc-cancer-model-001 (license and licenseTier record fields)",
+    "pmc-cancer-gate-002 (authoritative tiering rules the resolver implements)",
+    "PLAN.md (Solution approach — Step 3: License resolution)",
+    "PMC Open Access Subset file list format + license field documentation",
+    "JATS <license> element specification",
+    "SPDX license list; Creative Commons license identifiers"
+  ],
+  "output": "A merged PR adding the license resolver module (TypeScript/ESM) with fixtures for every license id and conflict case, CI-enforced passing tests, and documentation of the OA-field × JATS cross-check logic.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

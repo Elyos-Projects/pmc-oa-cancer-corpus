@@ -1,0 +1,33 @@
+{
+  "id": "pmc-cancer-reuse-018",
+  "title": "Track + verify external reuse events",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "research",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The project's Definition of Shipped requires verifiable external reuse, and M3's exit criteria require ≥ 1 named consumer using a release or ≥ 2 verifiable reuse events. Self-reported reuse does not count; evidence must be externally verifiable. This task is the Steward's responsibility: actively seek, discover, and record reuse events with external evidence links, and update the outcome ledger. Depends on release2-016 (a release to track reuse of).",
+  "objective": "Identify, verify, and record ≥ 1 named consumer using a corpus release in their work (or ≥ 2 verifiable external reuse events), each with externally verifiable evidence — and commit the evidence to the outcome ledger.",
+  "acceptanceCriteria": [
+    "At least 1 named consumer (lab, advocacy org, NLP group) using a corpus release in their work is identified and confirmed, with external evidence (citation, public repo, published tool); OR at least 2 verifiable external reuse events are identified (Zenodo download + derivative, citation, public repo dependency).",
+    "Each reuse event is recorded with: consumer/reuser name, org, nature of reuse, date, and an externally verifiable evidence link (DOI, URL, or public repo path).",
+    "Self-reported reuse without external verification does not count; each event must be independently verifiable.",
+    "Events are committed to the outcome ledger (outcomes/<release-id>.json or equivalent) in a machine-readable format.",
+    "The Steward confirms the evidence is current and the links are accessible at the time of recording."
+  ],
+  "resources": [
+    "pmc-cancer-release2-016 (second release to track reuse of)",
+    "pmc-cancer-partner-011 (first consumer evidence to follow up on)",
+    "PLAN.md (Success metrics — verifiable external reuse events; Sustainability — Outcome tracking)",
+    "Zenodo usage statistics and derivative tracking"
+  ],
+  "output": "A committed outcome ledger update (outcomes/<release-id>.json) recording ≥ 1 named consumer or ≥ 2 verifiable reuse events, each with external evidence links and reuse description.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

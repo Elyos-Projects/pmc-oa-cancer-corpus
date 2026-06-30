@@ -1,0 +1,37 @@
+{
+  "id": "pmc-cancer-snapshot-009",
+  "title": "Pinned-snapshot ingestion + license-text snapshot capture",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "data-pipeline"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Reproducibility requires pinning the source snapshot: the same pinned PMC OA file list + Europe PMC OA index + MeSH vocabulary version must produce the same article set on every build. The ingestion module must record the snapshot date and spec versions, respect rate limits (no scraping, no committed API keys), and capture a license snapshot (committed copy + SHA-256 + Wayback URL) for each license type — so the license resolver can cite a stable, auditable license source. Depends on model-001 (provenance and specVersions fields) and license-004 (which uses the resolved snapshot).",
+  "objective": "Implement the pinned-snapshot ingestion module: download and pin the PMC OA file list and Europe PMC OA index at a target snapshot date, record spec versions in specVersions, capture per-license-type license snapshots (committed copy + SHA-256 + Wayback URL), and populate provenance fields on every record.",
+  "acceptanceCriteria": [
+    "Ingests from official PMC OA file lists and/or OA Web Service + Europe PMC REST API within documented rate limits; no scraping; no API keys or secrets committed.",
+    "Pins the snapshot date, PMC OA file-list version, Europe PMC API version, MeSH version, and JATS version into specVersions on every record.",
+    "Captures a license snapshot per license type: committed copy of the license text/page + SHA-256 hash + Wayback Machine save URL; records path + hash + Wayback timestamp in license.snapshotRef.",
+    "Every included record's provenance object is fully populated: sourceService, retrievedAt, snapshotVersion, meshVersion, attribution.",
+    "A clean rebuild from the same pinned snapshot produces the same article set and provenance data (deterministic).",
+    "pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off; code MIT licensed."
+  ],
+  "resources": [
+    "pmc-cancer-model-001 (provenance and specVersions record fields)",
+    "pmc-cancer-license-004 (uses snapshotRef for license resolution)",
+    "PLAN.md (Solution approach — Step 1: Snapshot & pin; Dependencies & integrations)",
+    "PMC Open Access Subset FTP file lists — https://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_bulk/",
+    "NCBI PMC OA Web Service documentation",
+    "Europe PMC REST API documentation — https://europepmc.org/RestfulWebService",
+    "Wayback Machine Save API — https://archive.org/help/wayback_api.php"
+  ],
+  "output": "A merged PR adding the pinned-snapshot ingestion module (TypeScript/ESM) with spec-version pinning, provenance population, per-license-type license snapshot capture, and documentation of the no-scraping/no-API-key contract.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

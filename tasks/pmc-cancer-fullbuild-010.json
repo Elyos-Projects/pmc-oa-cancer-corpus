@@ -1,0 +1,34 @@
+{
+  "id": "pmc-cancer-fullbuild-010",
+  "title": "Full deterministic oncology corpus build from snapshot",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "data-pipeline"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "M1's capstone: scale from the M0 pilot to the full C04 oncology corpus, running the complete hardened pipeline (patient-content detector, pinned-snapshot ingestion, full MeSH C04 query) deterministically. The manifest hash must be recorded and reproducible. This is the first release-quality full corpus. Depends on patient-008, snapshot-009, query-003, and bundle-005 all being complete and CI-green.",
+  "objective": "Run the full deterministic oncology corpus build from a pinned snapshot using the complete M1 pipeline: apply gate-002 and patient-008 across all C04 articles, build per-tier bundles, emit per-bundle LICENSE manifests and a datasheet, record the manifest content hash, and produce a committed audit artifact showing 0 tier/patient-content leakage and 100% provenance.",
+  "acceptanceCriteria": [
+    "Full C04 oncology corpus built deterministically from a pinned snapshot; the manifest content hash is recorded and reproduces byte-identically on a clean rebuild.",
+    "gate-002 (license tiering) and patient-008 (patient-content detector) applied across every article in the build; the committed audit artifact shows 0 tier leakage and 0 patient-content leakage in redistributable bundles.",
+    "Provenance is 100% complete on every included record: PMCID, PMID, DOI, sourceService, retrievedAt, snapshotVersion, meshVersion, license id + URL + snapshotRef, attribution.",
+    "Per-tier bundles (commercial, non-commercial, no-derivatives, metadata-only) and per-bundle LICENSE manifests emitted.",
+    "A Datasheet-for-Datasets (composition, collection, uses, limitations, guardrails) is produced and committed alongside the manifest.",
+    "License+compliance reviewer and technical reviewer sign off before the corpus is published or submitted."
+  ],
+  "resources": [
+    "pmc-cancer-patient-008", "pmc-cancer-snapshot-009", "pmc-cancer-query-003", "pmc-cancer-bundle-005",
+    "pmc-cancer-gate-002", "pmc-cancer-model-001", "pmc-cancer-reviewer-014",
+    "PLAN.md (Roadmap M1; Definition of Shipped)",
+    "Datasheets for Datasets (Gebru et al., 2018/2021)"
+  ],
+  "output": "A full oncology corpus release: manifest JSON + license-segregated bundles + per-bundle LICENSE manifests + datasheet + committed gate audit artifact, with manifest content hash recorded and reviewer sign-offs documented.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

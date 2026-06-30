@@ -1,0 +1,35 @@
+{
+  "id": "pmc-cancer-taxonomy-013",
+  "title": "MeSH→cancer-type taxonomy + study-type classifier",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "nlp", "mesh"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The corpus metadata requires per-article cancer-type tags and study-type classifications. These must be documented (taxonomy), implemented (classifier), scored against a human-labeled gold set, and have their thresholds enforced in CI — so curation quality is measurable, not asserted. Every tag must carry provenance linking it to its source MeSH terms. Depends on gold-012 (gold set for scoring) and query-003 (the MeSH C04 taxonomy the mapping is derived from).",
+  "objective": "Implement and document the MeSH C04 → cancer-type taxonomy mapping and the study-type classifier; score both against the gold set (pmc-cancer-gold-012); enforce the CI precision/recall thresholds; and ensure every emitted tag carries provenance.",
+  "acceptanceCriteria": [
+    "MeSH C04 → cancer-type taxonomy is documented as a versioned, committed artifact: every C04 subtree node mapped to a canonical cancer-type label, with the MeSH version pinned.",
+    "Cancer-type tagger scores ≥ 0.90 precision and ≥ 0.85 recall on the gold set (pmc-cancer-gold-012); scores and a confusion matrix are committed to the repo and enforced in CI (build fails if thresholds are not met).",
+    "Study-type classifier covers all six study types (review, clinical-trial, observational, preclinical, case-report, methods) and reports precision, recall, and a confusion matrix on the gold set; thresholds are documented and enforced in CI.",
+    "Every emitted cancer-type and study-type tag carries provenance: the source MeSH terms and/or fields from which the tag was derived.",
+    "An oncology domain reviewer has sanity-checked the taxonomy mapping and classifier thresholds; their comments and dispositions are recorded.",
+    "Code MIT licensed; pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off."
+  ],
+  "resources": [
+    "pmc-cancer-gold-012 (human-labeled gold set for scoring)",
+    "pmc-cancer-query-003 (MeSH C04 taxonomy and pinned MeSH version)",
+    "pmc-cancer-model-001 (cancerTypes[], studyType, mesh[] record fields)",
+    "PLAN.md (Solution approach — Step 5: Metadata normalization; Success metrics)",
+    "MeSH Neoplasms tree C04 — https://meshb.nlm.nih.gov/treeView"
+  ],
+  "output": "A merged PR adding the MeSH→cancer-type taxonomy artifact (committed, versioned), the cancer-type tagger and study-type classifier modules (TypeScript/ESM), gold-set evaluation scripts, CI threshold enforcement, and oncology reviewer comments recorded.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "pmc-cancer-release2-016",
+  "title": "Second full corpus release + data-quality report",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "data",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "data-pipeline"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "M2's capstone: a second full corpus release that incorporates the taxonomy classifier (cancer-type/study-type tags), the aggregate-vs-individual-data signal, and a data-quality report showing measurable improvement vs the M1 baseline. This release must demonstrate at least one verifiable external reuse event, confirming the corpus is being used by real beneficiaries.",
+  "objective": "Produce and release a second full oncology corpus, incorporating M2 enrichments (cancer-type tags, study-type classification, data-availability signal), alongside a data-quality report measuring improvement vs the M1 baseline — with ≥ 1 verifiable external reuse event recorded.",
+  "acceptanceCriteria": [
+    "Second corpus release built deterministically from a pinned snapshot; manifest content hash recorded and reproducible on clean rebuild.",
+    "Cancer-type tags, study-type classifications, and data-availability signals populated on all applicable records; classifier scores on the gold set committed alongside the release.",
+    "Data-quality report documents measurable curation-quality improvement vs the M1 baseline release: at minimum, precision/recall improvement or coverage increase, with before/after metrics.",
+    "gate-002 and patient-008 applied across the full build; audit artifact shows 0 tier leakage and 0 patient-content leakage in redistributable bundles.",
+    "At least 1 verifiable external reuse event recorded: citation, Zenodo derivative, or public repo depending on the corpus — with externally verifiable evidence linked in the outcome ledger.",
+    "License+compliance reviewer and technical reviewer sign off before publication."
+  ],
+  "resources": [
+    "pmc-cancer-taxonomy-013", "pmc-cancer-dataavail-015",
+    "pmc-cancer-fullbuild-010 (M1 baseline to compare against)",
+    "pmc-cancer-gold-012 (gold set for classifier evaluation)",
+    "pmc-cancer-partner-011 (consumer evidence / Zenodo reuse tracking)",
+    "PLAN.md (Roadmap M2; Success metrics — verifiable reuse event)"
+  ],
+  "output": "A second versioned corpus release: manifest JSON + license-segregated bundles + per-bundle LICENSE manifests + updated datasheet + data-quality report (vs M1 baseline) + committed gate audit artifact + acceptance/reuse evidence in the outcome ledger.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

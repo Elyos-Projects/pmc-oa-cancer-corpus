@@ -1,0 +1,34 @@
+{
+  "id": "pmc-cancer-maint-019",
+  "title": "Maintenance cadence + steward handoff doc",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "A corpus without a documented maintenance cadence and a named steward will drift, accumulate stale records, and lose consumer trust. This task produces the operational documentation that allows the project to continue beyond the founding contributors: the refresh schedule, the steward's responsibilities, the consumer liaison process, and the handoff procedure for rotating the steward role. Depends on refresh-017 (the refresh process to document a cadence for) and partner-011 (so the steward knows who the consumers are).",
+  "objective": "Write and commit the maintenance cadence document and steward handoff guide: defining the refresh schedule, steward responsibilities (source tracking, consumer liaison, outcome recording), escalation paths, and the procedure for rotating the steward role.",
+  "acceptanceCriteria": [
+    "Documents the maintenance refresh cadence: frequency (e.g., quarterly), trigger conditions (new PMC OA file-list release, MeSH annual update, retraction-watch alert), and responsible party.",
+    "Documents the steward's responsibilities: monitoring PMC OA/Europe PMC for changes, running the incremental refresh (pmc-cancer-refresh-017), maintaining consumer relationships, and recording acceptance + reuse evidence in the outcome ledger.",
+    "Identifies a named steward (or a named rotation of ≥ 2 stewards) for the ongoing maintenance period, with contact information recorded.",
+    "Documents the handoff procedure: what knowledge a successor steward needs, where to find the pinned snapshot, how to run the refresh, and how to reach active consumers.",
+    "Includes escalation paths: who to contact if a refresh reveals a license compliance issue or a retraction of a previously released article.",
+    "Document is DCO signed-off and committed to the repo."
+  ],
+  "resources": [
+    "pmc-cancer-refresh-017 (the refresh process to schedule)",
+    "pmc-cancer-partner-011 (consumer list for the steward to maintain)",
+    "PLAN.md (Governance — Steward; Sustainability & maintenance)",
+    "pmc-cancer-reuse-018 (outcome ledger format for the steward to use)"
+  ],
+  "output": "A committed maintenance cadence and steward handoff document covering the refresh schedule, steward role, named steward(s), handoff procedure, and escalation paths.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

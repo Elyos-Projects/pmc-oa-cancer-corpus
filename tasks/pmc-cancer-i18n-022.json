@@ -1,0 +1,36 @@
+{
+  "id": "pmc-cancer-i18n-022",
+  "title": "Non-English OA cancer article inclusion (multilingual)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "data",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "multilingual"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The current corpus pipeline is English-first. A significant portion of PMC OA and Europe PMC OA cancer literature is published in other languages (especially Spanish, Portuguese, Chinese, French, German). Including non-English articles requires language-aware MeSH mapping, a language-aware patient-content detector, and a reviewer with appropriate language competence. This is a backlog item requiring additional tooling and reviewer capacity before it can proceed.",
+  "objective": "Extend the corpus pipeline to include non-English OA cancer articles: add language detection, language-aware MeSH mapping, language-aware patient-content detection, and a multilingual datasheet section — with a qualified reviewer covering the target languages.",
+  "acceptanceCriteria": [
+    "Language detection is added to the ingestion pipeline; detected language is recorded on every canonical record.",
+    "MeSH mapping is verified to work correctly for non-English articles (MeSH is language-neutral, but journal/title metadata may be in the source language); any language-specific edge cases are documented.",
+    "The patient-content detector's signal set is reviewed and extended for non-English article structures (JATS is mostly language-neutral, but heuristics may need tuning).",
+    "A qualified reviewer covering the target language(s) is named and their sign-off on the language-specific handling is recorded before the multilingual corpus is released.",
+    "The datasheet is updated to document the language composition of the corpus and any language-specific limitations.",
+    "All existing gate-002 and patient-008 tests continue to pass; pnpm build && pnpm test && pnpm lint green; DCO signed-off."
+  ],
+  "resources": [
+    "pmc-cancer-fullbuild-010 (English-first baseline pipeline to extend)",
+    "pmc-cancer-query-003 (MeSH C04 query — language-neutral at MeSH level)",
+    "pmc-cancer-patient-008 (patient-content detector to extend for multilingual)",
+    "PLAN.md (Open questions — non-English OA cancer articles)",
+    "Europe PMC multilingual OA holdings documentation",
+    "JATS language metadata elements"
+  ],
+  "output": "An updated corpus release including non-English OA cancer articles from PMC OA / Europe PMC OA, with language detection, language-aware metadata handling, extended patient-content detection, and an updated multilingual datasheet section.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

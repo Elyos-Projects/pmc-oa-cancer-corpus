@@ -1,0 +1,32 @@
+{
+  "id": "pmc-cancer-partner-011",
+  "title": "Secure first confirmed consumer/partner (or proven Zenodo path)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "research",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The project's Definition of Shipped requires verified acceptance: either a named consumer confirms they will use or accept a release, or a Zenodo release is demonstrably adopted by ≥ 1 external reuser. Until this is achieved, all delivery-dependent tasks remain verifiedNeed:false. This task converts the outreach threads opened in pmc-cancer-outreach-006 into a confirmed commitment. Securing this flips verifiedNeed to true and sets requestor on the relevant tasks.",
+  "objective": "Convert the M0 outreach into a confirmed first consumer/partner: secure written confirmation from a named lab, advocacy org, or NLP group that they will use or accept a corpus release, OR document a proven Zenodo release path where ≥ 1 external reuser has downloaded or cited the release — and record the evidence.",
+  "acceptanceCriteria": [
+    "Either: a named lab/advocacy org/NLP group confirms in writing they will use or accept a corpus release (email or equivalent recorded); the confirmation message and contact are committed as evidence.",
+    "Or: a Zenodo release is published, adopted by ≥ 1 external reuser (demonstrable via Zenodo download stats, a citation, a public repo dependency, or a Zenodo derivative), and the evidence is externally verifiable and committed.",
+    "The consumption/acceptance mechanism is documented: how the consumer will access, use, or cite the release.",
+    "The Steward updates the relevant task JSONs to set verifiedNeed:true and requestor to the named consumer/partner once confirmed.",
+    "Any conditions or constraints the partner has placed on the release (e.g., license tier preference, format) are recorded and surfaced to the Maintainer."
+  ],
+  "resources": [
+    "pmc-cancer-outreach-006 (outreach threads and Zenodo fallback path)",
+    "PLAN.md (Problem & beneficiaries; Success metrics; Definition of Shipped)",
+    "Zenodo deposit documentation"
+  ],
+  "output": "A committed document recording the confirmed consumer/partner (name, org, contact, confirmation evidence, consumption mechanism) or the Zenodo reuse evidence, with a follow-up note on which task JSONs have been updated to verifiedNeed:true.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

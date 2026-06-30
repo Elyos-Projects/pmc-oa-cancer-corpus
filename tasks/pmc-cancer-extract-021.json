@@ -1,0 +1,36 @@
+{
+  "id": "pmc-cancer-extract-021",
+  "title": "Large-scale structured extraction pass (funded)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "data",
+  "lane": "funded",
+  "priority": "low",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "nlp", "data-pipeline"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "After the corpus pipeline is mature (M1/M2 complete), a structured extraction pass using an LLM can enrich full-text articles (where CC licenses permit derivative processing) with structured fields: entities, relationships, outcome data, trial registrations, and statistical summaries. This is funded-lane work: it runs via packages/runner against donor API credits with a hard per-task budget cap, never exceeding the declared fundedBudgetUsd. Extraction is only performed on articles with permitsDerivatives:true; ND-licensed articles are excluded from derivative extraction. All extraction outputs carry provenance and are gate-reviewed before release.",
+  "objective": "Run a large-scale structured extraction pass over CC-BY/CC-BY-SA full-text articles in the M1/M2 corpus using packages/runner (funded lane, metered API execution), producing structured metadata fields (entities, relationships, statistical summaries) within the declared budget cap, with provenance on every extracted field.",
+  "acceptanceCriteria": [
+    "Extraction is performed only on articles with license.permitsDerivatives:true; CC-BY-ND and CC-BY-NC-ND articles are explicitly excluded from derivative extraction.",
+    "All extracted fields carry provenance: article PMCID, extraction model version, extraction date, and the source passage from which the field was derived.",
+    "Total compute cost stays within the declared fundedBudgetUsd hard cap; packages/runner enforces the cap and the run aborts if the cap is reached.",
+    "No API keys or secrets are committed; the funded-lane runner supplies credentials at runtime.",
+    "Extracted outputs pass a spot-audit (≥ 50 records reviewed for accuracy and hallucination rate); results are recorded.",
+    "Extraction results are committed as supplementary metadata (not replacing canonical record fields); gate-002 and patient-008 are re-verified to confirm no new leakage from extracted content."
+  ],
+  "resources": [
+    "pmc-cancer-fullbuild-010 (M1 corpus — source of full-text articles for extraction)",
+    "pmc-cancer-gate-002 (ND exclusion rule + license filter)",
+    "pmc-cancer-model-001 (canonical record — provenance fields for extracted data)",
+    "C:\\code\\elyos\\packages\\runner (funded-lane metered runner)",
+    "PLAN.md (Dependencies — funded lane via packages/runner)"
+  ],
+  "output": "A supplementary structured-extraction dataset: per-article extracted fields (entities, relationships, statistical summaries) with full provenance, committed as an extension of the M2 corpus manifest, with spot-audit results and cost receipts recorded.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0",
+  "fundedBudgetUsd": 100
+}

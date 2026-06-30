@@ -1,0 +1,33 @@
+{
+  "id": "pmc-cancer-reviewer-014",
+  "title": "Name/secure the License+compliance reviewer (blocking gate role)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "licensing"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "No corpus release can ship without a named License+compliance reviewer: this role is the mandatory, non-skippable gatekeeper for all license-tiering decisions and cancer-guardrail sign-offs. Until the role is filled by a qualified individual (or a ≥ 2-person rotation), every delivery-dependent task stays blocked. The reviewer must be in place before the M0 pilot review begins. This task secures that commitment and records it so all downstream tasks know who holds the gate.",
+  "objective": "Identify, recruit, and formally confirm at least one qualified License+compliance reviewer, record their name/qualifications/responsibilities/escalation path, and establish the review channel needed before any corpus release can proceed.",
+  "acceptanceCriteria": [
+    "At least one named individual with documented license and/or open-access compliance qualifications is confirmed in writing and recorded in a committed document.",
+    "The document states the reviewer's role scope: mandatory sign-off on every license-tier mapping, every cancer-guardrail decision, and every corpus release before it ships.",
+    "A rotation rule is recorded: if a single reviewer is named, the document notes the escalation path if that reviewer is unavailable; if ≥ 2 reviewers are named, the rotation protocol is described.",
+    "The reviewer has acknowledged (in writing or recorded channel) that they have read and accepted the license-tiering rules and cancer guardrails as defined in gate-002.",
+    "A contact/escalation channel for review requests is documented and reachable.",
+    "The committed document is DCO signed-off and merged to the main branch before the M0 pilot review (pmc-cancer-pilot-007) is initiated."
+  ],
+  "resources": [
+    "PLAN.md (Governance, roles & stakeholders section)",
+    "TASKS.md (gate-002 acceptance criteria — the rules the reviewer must accept)",
+    "C:\\code\\elyos\\CLAUDE.md (refusal guardrails)"
+  ],
+  "output": "A committed document (e.g., docs/reviewers.md or similar) recording the License+compliance reviewer name(s), qualifications, role scope, rotation/escalation rules, and review channel; merged to main before the M0 pilot review.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "pmc-cancer-pilot-007",
+  "title": "End-to-end pilot corpus for one cancer subdomain",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "data-pipeline"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "M0's capstone: run the entire pipeline end-to-end on one tractable cancer subdomain, producing a license-segregated, provenanced, datasheeted pilot corpus and releasing it to a real beneficiary (informal consumer or Zenodo DOI). All upstream M0 tasks must be complete: the canonical record model (001), the gate checklist (002), the versioned inclusion query (003), the license resolver (004), the bundle builder (005), the outreach/release path (006), and the named reviewer (014). This is the first proof that the pipeline actually works at a real scale and produces an accepted, citable output.",
+  "objective": "Build an end-to-end pilot corpus for one chosen cancer subdomain: run the inclusion query, apply the license + cancer-guardrail gate, build license-segregated bundles, produce a datasheet, and release/submit it via the M0 acceptance path — with all gate artifacts committed and a confirmed acceptance evidence artifact recorded.",
+  "acceptanceCriteria": [
+    "Pilot subdomain chosen for tractable size and strong CC-BY coverage, on a realistic acceptance path; the choice is documented with rationale.",
+    "Every article in the pilot passed gate-002 with a committed tier/guardrail audit artifact; 0 tier leakage (no non-commercial/no-license article in the commercial bundle) and 0 patient-content leakage in redistributable bundles.",
+    "License correctness audited on a stratified sample (target 100% for the pilot); provenance is 100% complete on every included record.",
+    "Build is deterministic: manifest content hash recorded and reproduces on a clean rebuild from the same pinned snapshot.",
+    "Datasheet (Datasheet-for-Datasets format: composition, collection method, uses, limitations, guardrails) produced and committed.",
+    "Release accepted via informal channel or a published Zenodo DOI with the Steward's acceptance evidence artifact (outcomes/<release-id>.json) recorded in the repo — or submitted with the specific blocker surfaced.",
+    "License+compliance reviewer (pmc-cancer-reviewer-014) has signed off on the release before it ships."
+  ],
+  "resources": [
+    "pmc-cancer-model-001", "pmc-cancer-gate-002", "pmc-cancer-query-003",
+    "pmc-cancer-license-004", "pmc-cancer-bundle-005", "pmc-cancer-outreach-006",
+    "pmc-cancer-reviewer-014",
+    "PLAN.md (Roadmap M0; Definition of Shipped)",
+    "Zenodo deposit documentation",
+    "Datasheets for Datasets (Gebru et al., 2018/2021)"
+  ],
+  "output": "A versioned pilot corpus release: manifest JSON + license-segregated bundles + per-bundle LICENSE manifests + datasheet + committed gate audit artifact + acceptance evidence artifact (outcomes/<release-id>.json), with manifest content hash recorded and the release accepted or submitted.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}
