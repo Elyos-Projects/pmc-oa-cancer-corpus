@@ -1,0 +1,32 @@
+{
+  "id": "pmc-cancer-dash-024",
+  "title": "Outcome dashboard (acceptance + reuse events)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The Elyos 'delivered, not merged' standard requires tracking acceptance and reuse events. Currently these are recorded in the outcome ledger (JSON files) but there is no summary view. A lightweight dashboard that reads the outcome ledger and displays acceptance evidence, reuse events, and success-metric status makes the project's delivery evidence visible to contributors, maintainers, and potential partners — supporting the steward's work and the project's credibility.",
+  "objective": "Implement a lightweight outcome dashboard that reads the project's outcome ledger (outcomes/*.json) and displays acceptance evidence, reuse events, and current status against the project's success metrics.",
+  "acceptanceCriteria": [
+    "Dashboard reads the outcome ledger (outcomes/*.json files in the repo) and displays: number of corpus releases, acceptance evidence per release (partner name or Zenodo DOI), recorded reuse events with external evidence links, and current success-metric status (license correctness, leakage counts, reuse event count).",
+    "Dashboard is static (no runtime server required): generates a static HTML/JSON summary from the ledger files that can be committed or served as a GitHub Pages artifact.",
+    "The dashboard accurately reflects what is in the ledger and does not interpolate or infer status not present in the ledger files.",
+    "pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off; code MIT licensed."
+  ],
+  "resources": [
+    "pmc-cancer-reuse-018 (outcome ledger format to read from)",
+    "pmc-cancer-partner-011 (acceptance evidence format)",
+    "PLAN.md (Success metrics table — the metrics the dashboard displays)",
+    "C:\\code\\elyos\\CLAUDE.md (Elyos 'delivered, not merged' standard)"
+  ],
+  "output": "A merged PR adding a static outcome dashboard generator (TypeScript/ESM) that reads outcomes/*.json and emits a summary report of acceptance evidence, reuse events, and success-metric status.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

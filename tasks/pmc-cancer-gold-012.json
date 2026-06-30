@@ -1,0 +1,34 @@
+{
+  "id": "pmc-cancer-gold-012",
+  "title": "Human-labeled gold set (cancer-type + study-type)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "data",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "nlp"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The cancer-type/study-type classifier (pmc-cancer-taxonomy-013) must be scored against a human-labeled ground truth before CI can enforce quality thresholds. Without this gold set, the classifier's precision/recall claims are unverifiable. The gold set must be stratified by cancer type to avoid bias toward the most common cancer types, and all labels must carry provenance. Articles with flagged patient-content must not be included. Depends on fullbuild-010 (the article pool to sample from).",
+  "objective": "Create a human-labeled gold set of ≥ 200 articles from the M1 full corpus, stratified by cancer type, with cancer-type and study-type labels applied by qualified annotators, inter-annotator agreement recorded, and provenance documented.",
+  "acceptanceCriteria": [
+    "At least 200 articles, stratified by cancer type (no single cancer type dominates the sample), are labeled for both cancer-type (MeSH C04 → specific cancer type) and study-type (review/clinical-trial/observational/preclinical/case-report/methods).",
+    "Labels are sourced from qualified annotators (oncology/domain-informed); label provenance is recorded (who labeled, date, source information used).",
+    "Inter-annotator agreement (IAA, e.g., Cohen's kappa) is calculated and recorded for both cancer-type and study-type labels on the shared subset.",
+    "No articles with patientContentFlag.flagged:true are included in the gold set.",
+    "The gold set is committed as metadata-only (no full text redistributed unless the article license permits); only PMCID, title, journal, and the assigned labels are in the committed artifact.",
+    "The gold set file is schema-validated and machine-readable for use by the CI scoring step in pmc-cancer-taxonomy-013."
+  ],
+  "resources": [
+    "pmc-cancer-fullbuild-010 (the article pool to sample from)",
+    "pmc-cancer-query-003 (MeSH C04 taxonomy used for cancer-type labels)",
+    "PLAN.md (Quality — gold set; Success metrics — cancer-type tag accuracy)",
+    "MeSH Neoplasms tree C04 (label taxonomy)"
+  ],
+  "output": "A committed gold set artifact: ≥ 200 human-labeled records (PMCID, cancer-type label(s), study-type label, annotator, date) with inter-annotator agreement metrics and label provenance documented; in a machine-readable format for CI evaluation.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

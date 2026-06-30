@@ -1,0 +1,35 @@
+{
+  "id": "pmc-cancer-query-003",
+  "title": "Versioned cancer inclusion query (MeSH C04 + supplements)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "mesh"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The corpus filter must be reproducible across builds. A versioned, committed MeSH inclusion query is required so every build selects the same article set from the same pinned MeSH version, and future builds can show what changed. MeSH changes between annual releases, so the query must be pinned to a specific version. This task defines the filter that determines which articles are candidates for the gate and downstream pipeline. Risk is medium because a poorly scoped query (too broad or too narrow) leads to measurable curation-quality problems that require the gold-set evaluation to catch.",
+  "objective": "Define, document, and commit the versioned cancer inclusion query based on the MeSH Neoplasms tree (C04) plus any curated supplementary terms, including the result count from the target pinned snapshot and rationale for any inclusions or exclusions beyond C04.",
+  "acceptanceCriteria": [
+    "The query artifact names the exact MeSH version (year/release) it targets and records it in specVersions.mesh.",
+    "The primary query covers the full MeSH C04 Neoplasms tree (all descendants) and documents any supplementary terms added or excluded, each with an explicit rationale.",
+    "The artifact records the result count (number of candidate articles) returned by the query against the target pinned snapshot, so future builds can detect drift.",
+    "The query is expressed in a machine-readable format (e.g., structured JSON or documented filter logic) that the build pipeline can ingest without ambiguity.",
+    "An oncology domain reviewer has sanity-checked the query scope (breadth vs. specificity), and their comments and dispositions are recorded.",
+    "The artifact is DCO signed-off and committed to the repository alongside the model-001 schema it populates (mesh[], cancerTypes[])."
+  ],
+  "resources": [
+    "pmc-cancer-model-001 (mesh[] and cancerTypes[] fields the query populates)",
+    "PLAN.md (Solution approach — Step 2: Cancer filter)",
+    "MeSH Neoplasms tree C04 — https://meshb.nlm.nih.gov/treeView",
+    "PMC OA Web Service MeSH query documentation",
+    "Europe PMC REST API MeSH filtering documentation"
+  ],
+  "output": "A committed query artifact (structured file + prose rationale) defining the versioned MeSH C04 cancer inclusion query, pinned MeSH version, supplementary terms with rationale, and result count from the target snapshot; with oncology reviewer comments recorded.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

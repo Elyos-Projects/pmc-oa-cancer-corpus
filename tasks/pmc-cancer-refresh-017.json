@@ -1,0 +1,35 @@
+{
+  "id": "pmc-cancer-refresh-017",
+  "title": "Incremental refresh/sync + retraction/removed-from-OA handling",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "maintenance",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "open-access", "literature", "data-pipeline"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "PMC OA changes over time: new articles are added, existing articles are updated, and — critically — some articles are retracted or removed from the OA subset. A corpus that does not handle retractions will silently retain withdrawn content in redistributable bundles, which is a compliance and accuracy failure. This task implements an incremental sync that detects changes vs the prior pinned snapshot and re-runs the gate on affected articles, with retracted/removed articles removed from bundles and kept metadata-only with a recorded reason. Depends on snapshot-009 (pinned ingestion) and fullbuild-010 (the prior snapshot to diff against).",
+  "objective": "Implement the incremental refresh/sync process that detects new, updated, retracted, and removed-from-OA articles vs the prior snapshot, re-runs the gate on changes, removes retracted/removed articles from redistributable bundles (keeping them metadata-only with reason), and emits a release changelog with a new manifest hash.",
+  "acceptanceCriteria": [
+    "Incremental sync compares the new PMC OA / Europe PMC OA snapshot against the prior pinned snapshot and detects: new articles (added), updated articles (changed metadata or license), retracted articles (PMID/PMCID in retraction watch or service retraction list), and articles removed from the OA subset.",
+    "Retracted or removed-from-OA articles are removed from all redistributable bundles; their canonical record is updated to exclusion {excluded:true, reason:'retracted'|'removed-from-oa'} and kept as metadata-only with the reason recorded.",
+    "Gate-002 re-runs on all changed articles; any article whose license changed since the prior snapshot is re-tiered.",
+    "A release changelog is emitted: listing added, updated, retracted, and removed articles with their prior and new status; a new manifest content hash is recorded for the updated corpus.",
+    "Build is deterministic from the new pinned snapshot; independent rebuild reproduces the manifest hash.",
+    "Code MIT licensed; pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off."
+  ],
+  "resources": [
+    "pmc-cancer-snapshot-009 (pinned-snapshot ingestion foundation)",
+    "pmc-cancer-fullbuild-010 (prior snapshot to diff against)",
+    "PLAN.md (Roadmap M3; Sustainability — Refresh)",
+    "NCBI Retraction Watch integration / PMC retraction list",
+    "PMC OA file list change detection documentation"
+  ],
+  "output": "A merged PR adding the incremental sync module (TypeScript/ESM): change detection, retraction/removal handling, gate re-run on changes, changelog emission, and updated manifest hash recording.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

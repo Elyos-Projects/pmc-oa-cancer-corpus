@@ -1,0 +1,37 @@
+{
+  "id": "pmc-cancer-gate-002",
+  "title": "License-tiering + cancer-guardrail triage checklist (blocking gate)",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "design-spec",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "open-access", "literature", "licensing", "bioinformatics"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "All corpus build tasks depend on an unambiguous, auditable gate that maps every possible PMC OA license to a reuse tier and enforces the binding cancer guardrails. Without this documented checklist, the license resolver (pmc-cancer-license-004) and bundle builder (pmc-cancer-bundle-005) cannot be implemented correctly. This is a blocking prerequisite for the automated pipeline and for every License+compliance reviewer sign-off. Requires model-001 to define the record fields the gate populates, and reviewer-014 to name the reviewer who must sign off on the checklist before implementation begins.",
+  "objective": "Define and document the complete license-tiering mapping and cancer-guardrail triage checklist: every PMC OA license id mapped to a licenseTier, every guardrail rule encoded as an objective criterion, and the resulting PASS/FLAG/EXCLUDE disposition logic—ready for implementation by the license resolver and for reviewer sign-off.",
+  "acceptanceCriteria": [
+    "Enumerates the licenseTier mapping for every license id (CC0, CC-BY, CC-BY-SA, CC-BY-ND, CC-BY-NC, CC-BY-NC-SA, CC-BY-NC-ND, no-CC-code, NIHMS) to {commercial, non-commercial, no-derivatives, metadata-only, excluded}; no default-allow (unknown/missing → metadata-only or exclude).",
+    "States the objective 'permits redistribution / derivatives' criterion: an article enters a redistributable bundle only if permitsRedistribution:true (and permitsDerivatives:true for derivative processing) resolved from the OA-service license field cross-checked against JATS <license>; any conflict → FLAG.",
+    "Encodes all binding cancer guardrails: OA/aggregate/de-identified only; controlled-access (dbGaP, EGA, individual-level biobanks) and identifiable patient data are out of scope; controlled-access references noted only; COSMIC/OncoKB flagged; TCGA-GDC-open/GEO-open permissible to reference.",
+    "Encodes the identifiable-patient-content screen criterion: case-report study-type + clinical-image/full-face/patient-media/individual-level-supplementary signals → flagged articles forced metadata-only; never re-identify.",
+    "Requires a license snapshot per license type (committed copy + SHA-256 + Wayback URL); specifies the snapshotRef storage path.",
+    "Defines the committed, reviewable per-article-batch audit artifact format: PASS/FLAG/EXCLUDE disposition + tier + reason, consumable by CI.",
+    "Signed off by the named License+compliance reviewer (pmc-cancer-reviewer-014) before implementation begins."
+  ],
+  "resources": [
+    "pmc-cancer-model-001 (canonical record model — defines licenseTier, patientContentFlag fields)",
+    "pmc-cancer-reviewer-014 (reviewer must be named before sign-off)",
+    "PLAN.md (Data, licensing & compliance section)",
+    "SPDX license list; Creative Commons CC0/BY/BY-SA/BY-ND/BY-NC family",
+    "PMC Open Access Subset OA license field documentation",
+    "JATS Journal Article Tag Suite <license> element spec"
+  ],
+  "output": "A committed design-spec document (checklist + decision tree) covering the complete license-tiering mapping and cancer-guardrail triage logic, with the License+compliance reviewer's sign-off recorded, ready for implementation by pmc-cancer-license-004 and pmc-cancer-bundle-005.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "pmc-cancer-dataavail-015",
+  "title": "Aggregate-vs-individual-data signal extractor",
+  "project": "pmc-oa-cancer-corpus",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "open-access", "literature", "bioinformatics", "data-pipeline"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Reusers of the corpus need to know, per article, whether the reported data is aggregate or individual-level, and whether the article mentions controlled-access data sources. This signal is extracted from data-availability statements (and, where licenses permit derivative processing, the full text). CC-BY-ND articles must be processed for facts only — no derivative full-text redistribution. The signal populates dataAvailability {aggregateOnly, mentionsControlledAccess, datasetRefs[]} on the canonical record. Depends on fullbuild-010 and gate-002 (for the ND rule confirmation).",
+  "objective": "Implement the aggregate-vs-individual-data signal extractor that parses data-availability statements (and, where permitted, full text) to populate dataAvailability {aggregateOnly, mentionsControlledAccess, datasetRefs[]} on the canonical record, with ND-licensed articles processed for facts only, and spot-audited for correctness.",
+  "acceptanceCriteria": [
+    "Parses data-availability statements (and, where the article license permits derivative processing, full text) to set aggregateOnly:boolean, mentionsControlledAccess:boolean, and datasetRefs[] on every applicable record.",
+    "CC-BY-ND and CC-BY-NC-ND licensed articles are processed for descriptive facts only; no derivative full-text transformation is applied to them; this ND rule is documented and confirmed by the License+compliance reviewer.",
+    "COSMIC/OncoKB references in datasetRefs[] are flagged (non-commercial/custom terms); TCGA-GDC-open/GEO-open references are permissible and labeled as open; this mapping follows gate-002.",
+    "A spot-audit sample of ≥ 50 articles is reviewed for correctness; audit results (correct/incorrect counts, any error patterns) are recorded and committed.",
+    "Code MIT licensed; pnpm build && pnpm test && pnpm lint pass; commit is DCO signed-off."
+  ],
+  "resources": [
+    "pmc-cancer-fullbuild-010 (article pool and full-text availability flags)",
+    "pmc-cancer-gate-002 (ND rule — facts yes, derivative full text no; COSMIC/OncoKB flag rule)",
+    "pmc-cancer-model-001 (dataAvailability record fields)",
+    "PLAN.md (Data, licensing & compliance — Referenced external datasets; Open questions — ND fact extraction)"
+  ],
+  "output": "A merged PR adding the data-availability signal extractor module (TypeScript/ESM), documentation of the ND processing rule (reviewer-confirmed), spot-audit results committed, and CI tests covering the controlled-access detection and ND safeguard.",
+  "requestor": "TO BE SECURED",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}
